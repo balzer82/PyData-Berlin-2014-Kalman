@@ -36,7 +36,7 @@ printing.init_printing()
 
 # <markdowncell>
 
-# Situation covered: You have an velocity sensor which measures the vehicle speed ($v$) in heading direction ($\psi$) and a yaw rate sensor ($\dot \psi$) which both have to fused with the position ($x$ & $y$) from a GPS sensor.
+# Situation covered: You have a velocity sensor, which measures the vehicle speed ($v$) in heading direction ($\psi$) and a yaw rate sensor ($\dot \psi$) which both have to fused with the position ($x$ & $y$) from a GPS sensor.
 
 # <headingcell level=2>
 
@@ -191,7 +191,7 @@ plt.colorbar(im, cax=cax);
 # <codecell>
 
 #path = './../RaspberryPi-CarPC/TinkerDataLogger/DataLogs/2014/'
-datafile = '2014-04-23-GPS-IMU-Data.csv'
+datafile = '2014-03-26-000-Data.csv'
 
 date, \
 time, \
@@ -237,6 +237,8 @@ course =(-course+90.0)
 # <markdowncell>
 
 # Matrix $J_H$ is the Jacobian of the Measurement function $h$ with respect to the state. Function $h$ can be used to compute the predicted measurement from the predicted state.
+# 
+# If a GPS measurement is available, the following function maps the state to the measurement.
 
 # <codecell>
 
@@ -251,12 +253,9 @@ hs
 JHs=hs.jacobian(state)
 JHs
 
-# <codecell>
+# <markdowncell>
 
-JH = np.matrix([[1.0, 0.0, 0.0, 0.0, 0.0],
-                [0.0, 1.0, 0.0, 0.0, 0.0],
-                [0.0, 0.0, 0.0, 1.0, 0.0],
-                [0.0, 0.0, 0.0, 0.0, 1.0]])
+# If no GPS measurement is available, simply set the corresponding values in $J_h$ to zero.
 
 # <headingcell level=2>
 
@@ -268,13 +267,13 @@ JH = np.matrix([[1.0, 0.0, 0.0, 0.0, 0.0],
 
 # <codecell>
 
-varGPS = 6.0 # Variance of GPS Measurement
-varspeed = 1.0 # Variance of the speed measurement
-varyaw = 0.1 # Variance of the yawrate measurement
-R = np.matrix([[varGPS**2, 0.0, 0.0, 0.0],
-               [0.0, varGPS**2, 0.0, 0.0],
-               [0.0, 0.0, varspeed**2, 0.0],
-               [0.0, 0.0, 0.0, varyaw**2]])
+sGPS = 5.0   # Standard Deviation of GPS Measurement
+sspeed = 2.0 # Standard Deviation of the speed measurement
+syaw = 0.01  # Standard Deviation of the yawrate measurement
+R = np.matrix([[sGPS**2, 0.0, 0.0, 0.0],
+               [0.0, sGPS**2, 0.0, 0.0],
+               [0.0, 0.0, sspeed**2, 0.0],
+               [0.0, 0.0, 0.0, syaw**2]])
 
 print(R, R.shape)
 
@@ -444,6 +443,17 @@ for filterstep in range(m):
                     [float(x[3])],
                     [float(x[4])]])
 
+    if GPS[filterstep]:
+        JH = np.matrix([[1.0, 0.0, 0.0, 0.0, 0.0],
+                        [0.0, 1.0, 0.0, 0.0, 0.0],
+                        [0.0, 0.0, 0.0, 1.0, 0.0],
+                        [0.0, 0.0, 0.0, 0.0, 1.0]])
+    else:
+        JH = np.matrix([[0.0, 0.0, 0.0, 0.0, 0.0],
+                        [0.0, 0.0, 0.0, 0.0, 0.0],
+                        [0.0, 0.0, 0.0, 1.0, 0.0],
+                        [0.0, 0.0, 0.0, 0.0, 1.0]])        
+    
     S = JH*P*JH.T + R
     K = (P*JH.T) * np.linalg.inv(S)
 
@@ -481,7 +491,7 @@ for filterstep in range(m):
 
 # <headingcell level=3>
 
-# Uncertainty
+# Uncertainties
 
 # <codecell>
 
@@ -543,7 +553,7 @@ plt.xlabel('Filter Step')
 plt.ylabel('')
 plt.title('Kalman Gain (the lower, the more the measurement fullfill the prediction)')
 plt.legend(prop={'size':18})
-plt.ylim([-0.5,0.5]);
+plt.ylim([-0.1,0.1]);
 
 # <headingcell level=2>
 
@@ -628,7 +638,7 @@ plt.axis('equal')
 fig = plt.figure(figsize=(9,9))
 
 # EKF State
-#plt.quiver(x0,x1,np.cos(x2), np.sin(x2), color='#94C600', units='xy', width=0.05, scale=0.5)
+plt.quiver(x0,x1,np.cos(x2), np.sin(x2), color='#94C600', units='xy', width=0.01, scale=0.2, label='Driving Direction')
 plt.plot(x0,x1, label='EKF Position')
 
 # Measurements
@@ -637,14 +647,10 @@ plt.scatter(mx[::5],my[::5], s=50, label='GPS Measurements')
 #cbar.ax.set_ylabel(u'EPE', rotation=270)
 #cbar.ax.set_xlabel(u'm')
 
-# Start/Goal
-plt.scatter(x0[0],x1[0], s=60, label='Start', c='g')
-plt.scatter(x0[-1],x1[-1], s=60, label='Goal', c='r')
-
 plt.xlabel('X [m]')
-plt.xlim(-400, -390)
+plt.xlim(80, 120)
 plt.ylabel('Y [m]')
-plt.ylim(215, 235)
+plt.ylim(150, 190)
 plt.title('Position')
 plt.legend(loc='best')
 
@@ -693,7 +699,7 @@ for i in range(len(millis)):
 
 # <codecell>
 
-from simplekml import Kml, Model, AltitudeMode, Orientation, Scale
+from simplekml import Kml, Model, AltitudeMode, Orientation, Scale, Style, Color
 
 # <codecell>
 
@@ -712,22 +718,14 @@ model_car = Model(altitudemode=AltitudeMode.clamptoground,
 # Create the track
 trk = kml.newgxtrack(name="EKF", altitudemode=AltitudeMode.clamptoground,
                      description="State Estimation from Extended Kalman Filter with CTRV Model")
-gps = kml.newgxtrack(name="GPS", altitudemode=AltitudeMode.clamptoground,
-                     description="Original GPS Measurements")
 
 # Attach the model to the track
 trk.model = model_car
-gps.model = model_car
-
 trk.model.link.href = car_dae
-gps.model.link.href = car_dae
 
 # Add all the information to the track
 trk.newwhen(car["when"])
 trk.newgxcoord(car["coord"])
-
-gps.newwhen(car["when"][::5])
-gps.newgxcoord((car["gps"][::5]))
 
 # Style of the Track
 trk.iconstyle.icon.href = ""
@@ -735,11 +733,15 @@ trk.labelstyle.scale = 1
 trk.linestyle.width = 4
 trk.linestyle.color = '7fff0000'
 
-gps.iconstyle.icon.href = ""
-gps.labelstyle.scale = 0
-gps.linestyle.width = 3
-gps.linestyle.color = '7fffffff'
+# Add GPS measurement marker
+fol = kml.newfolder(name="GPS Measurements")
+sharedstyle = Style()
+sharedstyle.iconstyle.icon.href = 'http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png'
 
+for m in range(len(latitude)):
+    if GPS[m]:
+        pnt = fol.newpoint(coords = [(longitude[m],latitude[m])])
+        pnt.style = sharedstyle
 
 # Saving
 #kml.save("Extended-Kalman-Filter-CTRV.kml")

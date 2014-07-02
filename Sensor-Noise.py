@@ -175,7 +175,10 @@ interact(pltnormpdf, mean=(-5,5,0.5), variance=(0.1,10,0.1));
 # With the help of statistical parameters, it is possible to describe a sensor reading and it's noise.
 # A lot of sensors can be described be the assumption:
 # 
-# `real value` + `white`, `gaussian` noise
+# [`real value`] + [`white`, `gaussian` noise]
 # 
 # so one can use the Kalman filter! Even it is not a perfect normal distribution, the Kalman Filter is the best estimator of the `real value`. The Kalman Filter does not work, if the sensor reading is `multimodal` (two or more peaks).
+
+# <codecell>
+
 

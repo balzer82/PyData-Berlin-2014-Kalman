@@ -134,14 +134,14 @@ print(H, H.shape)
 
 # <codecell>
 
-ra = 10.0**2
+ra = 10.0
 
-R = np.matrix([[ra, 0.0],
-              [0.0, ra]])
+R = np.matrix([[ra**2, 0.0],
+              [0.0, ra**2]])
 print(R, R.shape)
 
-# Plot between -10 and 10 with .001 steps.
-xpdf = np.arange(-10, 10, 0.001)
+# Plot
+xpdf = np.arange(-500, 500, 0.1)
 plt.subplot(121)
 plt.plot(xpdf, norm.pdf(xpdf,0,R[0,0]))
 plt.title('$\dot x$')
@@ -441,11 +441,11 @@ plt.axis('equal')
 # 
 # Problem: The car itself can't measure $X$ and $Y$ coordinates, but it's speed in driving direction. So a model (matrix $A$) had to be set up, which describes this.
 # 
-# Constant Turn Rate, Constant Velocity Model for a vehicle ![CTRV Model](CTRV-Model.png)
+# Constant Turn Rate, Constant Velocity Model for a vehicle: ![CTRV Model](CTRV-Model.png)
 # 
 # $$x_k= \left[ \matrix{ x \\ y \\ \psi \\ v \\ \dot\psi} \right] = \left[ \matrix{ \text{Position X} \\ \text{Position Y} \\ \text{Heading} \\ \text{Velocity} \\ \text{Yaw Rate}} \right]$$
 # 
-# Problem here is: The state depends on variables, which are a state variable, too.
+# Problem here is: The state depends on variables, which are a state variable, too. And $x$ and $y$ are calculated with $\sin$ and $\cos$, which are non-linear functions.
 
 # <headingcell level=4>
 
