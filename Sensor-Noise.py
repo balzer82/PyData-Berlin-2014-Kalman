@@ -3,7 +3,11 @@
 
 # <headingcell level=1>
 
-# How to handle sensor noise?
+# A brief introduction to sensor noise
+
+# <markdowncell>
+
+# PyData Berlin 2014
 
 # <codecell>
 
@@ -65,14 +69,14 @@ dists = ['Normal', 'Rayleigh', 'Weibull']
 
 @interact
 def plot_sb_dist(column=accelerations.columns.tolist(), dist=dists):
-    plt.figure(figsize=(10, 8))
+    plt.figure(figsize=(10, 6))
     dist_map = {
         'Rayleigh': stats.rayleigh,
         'Weibull': stats.exponweib,
         'Normal': stats.norm,
     }
     sb.distplot(accelerations[column], fit=dist_map[dist])
-    plt.savefig("ax_dist.png", dpi=150)
+    plt.savefig("ax_dist.png", dpi=72, bbox_inches='tight')
 
 # <headingcell level=3>
 
@@ -126,7 +130,7 @@ plt.savefig('gps_dist.png', dpi=150)
 
 @interact
 def plot_sb_dist(column=gps.columns.tolist(), dist=dists):
-    plt.figure(figsize=(10, 8))
+    plt.figure(figsize=(10, 6))
     dist_map = {
         'Rayleigh': stats.rayleigh,
         'Weibull': stats.exponweib,
@@ -178,7 +182,4 @@ interact(pltnormpdf, mean=(-5,5,0.5), variance=(0.1,10,0.1));
 # [`real value`] + [`white`, `gaussian` noise]
 # 
 # so one can use the Kalman filter! Even it is not a perfect normal distribution, the Kalman Filter is the best estimator of the `real value`. The Kalman Filter does not work, if the sensor reading is `multimodal` (two or more peaks).
-
-# <codecell>
-
 

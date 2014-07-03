@@ -42,3 +42,6 @@ This is actually a real life example, which fuses GPS measurements and IMU measu
 
 *coming soon...*
 
+## Presentation
+
+`Presentation.html` is made with [cleaver](https://github.com/jdan/cleaver): Simply `cleaver Presentation.md`

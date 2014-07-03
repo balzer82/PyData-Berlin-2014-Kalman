@@ -52,6 +52,10 @@ printing.init_printing()
 
 numstates=5 # States
 
+# <markdowncell>
+
+# The Intertial Measurement Unit (IMU) acquired data 50 times a second, the GPS sensor just with 10Hz, so we only have a position correction every 5th Kalman filter cycle.
+
 # <codecell>
 
 dt = 1.0/50.0 # Sample Rate of the Measurements is 50Hz
