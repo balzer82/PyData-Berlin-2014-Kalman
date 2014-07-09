@@ -41,6 +41,8 @@ Seaborn 0.3.1
 
 The best filter algorithm to fuse multiple sensor informations is the Kalman filter. To implement it for non-linear dynamic models (e.g. a car), analytic calculations for the matrices are necessary.
 
+![Data Filtering](Data-Filtering.png)
+
 This talk will show, how the IPython Notebook and Sympy helps to develop an optimal filter to fuse sensor information from different sources (e.g. IMU yawrate and GPS position) to get an optimal estimate.
 
 --
