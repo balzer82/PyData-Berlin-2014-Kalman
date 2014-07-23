@@ -611,7 +611,7 @@ plt.savefig('Extended-Kalman-Filter-CTRV-State-Estimates.png', dpi=72, transpare
 fig = plt.figure(figsize=(16,9))
 
 # EKF State
-plt.quiver(x0,x1,np.cos(x2), np.sin(x2), color='#94C600', units='xy', width=0.05, scale=0.5)
+#plt.quiver(x0,x1,np.cos(x2), np.sin(x2), color='#94C600', units='xy', width=0.05, scale=0.5)
 plt.plot(x0,x1, label='EKF Position')
 
 # Measurements
@@ -642,8 +642,8 @@ plt.axis('equal')
 fig = plt.figure(figsize=(9,9))
 
 # EKF State
-plt.quiver(x0,x1,np.cos(x2), np.sin(x2), color='#94C600', units='xy', width=0.01, scale=0.2, label='Driving Direction')
-plt.plot(x0,x1, label='EKF Position')
+#plt.quiver(x0,x1,np.cos(x2), np.sin(x2), color='#94C600', units='xy', width=0.01, scale=0.2, label='Driving Direction')
+plt.plot(x0,x1, label='EKF Position', linewidth=5, alpha=0.8)
 
 # Measurements
 plt.scatter(mx[::5],my[::5], s=50, label='GPS Measurements')
@@ -656,7 +656,7 @@ plt.xlim(80, 120)
 plt.ylabel('Y [m]')
 plt.ylim(150, 190)
 plt.title('Position')
-plt.legend(loc='best')
+plt.legend(loc='best');
 
 # <headingcell level=1>
 

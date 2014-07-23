@@ -63,7 +63,6 @@ A very basic introduction to sensor noise and how to describe them statistically
 ![ax noise](ax_dist.png)
 
 See [Sensor-Noise.ipynb](http://localhost:8888/notebooks/Sensor-Noise.ipynb)
-
 --
 
 ### 2. Filter idea in 1D

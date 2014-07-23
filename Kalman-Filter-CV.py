@@ -238,9 +238,6 @@ measurements = np.vstack((mx,my))
 
 print(measurements.shape)
 
-print('Standard Deviation of Acceleration Measurements=%.2f' % np.std(mx))
-print('You assumed %.2f in R.' % R[0,0])
-
 # <codecell>
 
 fig = plt.figure(figsize=(16,5))
