@@ -39,7 +39,7 @@ This is actually a real life example, which fuses GPS measurements and IMU measu
 
 ![GPS Position and Kalman Filter Estimation](https://raw.githubusercontent.com/balzer82/PyData-Berlin-2014-Kalman/master/EKF-Position.png)
 
-See [Extended-Kalman-Filter-CTRV.ipynb](https://raw.githubusercontent.com/balzer82/PyData-Berlin-2014-Kalman/master/Extended-Kalman-Filter-CTRV.ipynb)
+See [Extended-Kalman-Filter-CTRV.ipynb](http://nbviewer.ipython.org/github/balzer82/PyData-Berlin-2014-Kalman/blob/master/Extended-Kalman-Filter-CTRV.ipynb)
 
 
 ## Video
