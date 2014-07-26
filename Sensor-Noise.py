@@ -65,17 +65,22 @@ import scipy.stats as stats
 from IPython.html.widgets import interact
 dists = ['Normal', 'Rayleigh', 'Weibull']
 
+# <markdowncell>
+
+# Thanks Rob Story for the code in your [PyData Silicon Valley 2014 talk](https://www.youtube.com/watch?v=kmy-sfm3cC8)!
+
 # <codecell>
 
 @interact
 def plot_sb_dist(column=accelerations.columns.tolist(), dist=dists):
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(10, 4))
     dist_map = {
         'Rayleigh': stats.rayleigh,
         'Weibull': stats.exponweib,
         'Normal': stats.norm,
     }
-    sb.distplot(accelerations[column], fit=dist_map[dist])
+    sb.distplot(accelerations[column], fit=dist_map[dist], label='# of Sensor Readings')
+    sb.plt.legend()
     plt.savefig("ax_dist.png", dpi=72, bbox_inches='tight')
 
 # <headingcell level=3>
@@ -89,6 +94,8 @@ accelerations.describe()
 # <markdowncell>
 
 # One can use `mean` and `std` to describe, what's going on.
+# 
+# The variance is $\mathrm{std}^2$
 
 # <headingcell level=2>
 
@@ -121,10 +128,6 @@ sb.jointplot(gps.LonM, gps.LatM, kind='kde', \
              ylim=(gps.LatM.min()-1, gps.LatM.max()+1), \
              size=10, space=1)
 plt.savefig('gps_dist.png', dpi=150)
-
-# <markdowncell>
-
-# Thanks Rob Story for the code in your [PyData Silicon Valley 2014 talk](https://www.youtube.com/watch?v=kmy-sfm3cC8)!
 
 # <codecell>
 

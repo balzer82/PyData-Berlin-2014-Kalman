@@ -21,6 +21,7 @@ sb.set_context("talk")
 # <codecell>
 
 %matplotlib inline
+fw = 10 # figure width
 
 # <codecell>
 
@@ -38,7 +39,7 @@ var0  = 20.0
 
 # <codecell>
 
-plt.figure(figsize=(16,5))
+plt.figure(figsize=(fw,5))
 plt.plot(x,mlab.normpdf(x, mean0, var0), label='Normal Distribution')
 plt.ylim(0, 0.1);
 plt.legend(loc='best');
@@ -59,7 +60,7 @@ varMove  = 10.0   # Estimated or determined with static measurements
 
 # <codecell>
 
-plt.figure(figsize=(16,5))
+plt.figure(figsize=(fw,5))
 plt.plot(x,mlab.normpdf(x, meanMove, varMove), label='Normal Distribution')
 plt.ylim(0, 0.1);
 plt.legend(loc='best');
@@ -86,7 +87,7 @@ new_var, new_mean = predict(var0, mean0, varMove, meanMove)
 
 # <codecell>
 
-plt.figure(figsize=(16,5))
+plt.figure(figsize=(fw,5))
 plt.plot(x,mlab.normpdf(x, mean0, var0), label='Beginning Normal Distribution')
 plt.plot(x,mlab.normpdf(x, meanMove, varMove), label='Movement Normal Distribution')
 plt.plot(x,mlab.normpdf(x, new_mean, new_var), label='Resulting Normal Distribution')
@@ -120,7 +121,7 @@ varSensor  = 12.0
 
 # <codecell>
 
-plt.figure(figsize=(16,5))
+plt.figure(figsize=(fw,5))
 plt.plot(x,mlab.normpdf(x, meanSensor, varSensor))
 plt.ylim(0, 0.1);
 
@@ -145,7 +146,7 @@ var, mean = correct(new_var, new_mean, varSensor, meanSensor)
 
 # <codecell>
 
-plt.figure(figsize=(16,5))
+plt.figure(figsize=(fw,5))
 plt.plot(x,mlab.normpdf(x, new_mean, new_var), label='Beginning (after Predict)')
 plt.plot(x,mlab.normpdf(x, meanSensor, varSensor), label='Position Sensor Normal Distribution')
 plt.plot(x,mlab.normpdf(x, mean, var), label='New Position Normal Distribution')
@@ -191,7 +192,7 @@ distances
 mean = mean0
 var = var0
 
-plt.figure(figsize=(16,5))
+plt.figure(figsize=(fw,5))
 for m in range(len(positions)):
     
     # Predict
@@ -205,6 +206,7 @@ for m in range(len(positions)):
     plt.plot(x,mlab.normpdf(x, mean, var), label='%i. step (Correction)' % (m+1))
     
 plt.ylim(0, 0.1);
+plt.xlim(-20, 120)
 plt.legend();    
 
 # <headingcell level=1>

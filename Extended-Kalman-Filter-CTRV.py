@@ -10,7 +10,11 @@ from scipy.stats import norm
 from sympy import Symbol, symbols, Matrix, sin, cos
 from sympy.interactive import printing
 printing.init_printing()
-%pylab inline --no-import-all
+
+# <codecell>
+
+%matplotlib inline
+fw = 10 # figure width
 
 # <headingcell level=1>
 
@@ -499,7 +503,7 @@ for filterstep in range(m):
 
 # <codecell>
 
-fig = plt.figure(figsize=(16,9))
+fig = plt.figure(figsize=(fw,9))
 plt.semilogy(range(m),Px, label='$x$')
 plt.step(range(m),Py, label='$y$')
 plt.step(range(m),Pdx, label='$\psi$')
@@ -545,7 +549,7 @@ plt.tight_layout()
 
 # <codecell>
 
-fig = plt.figure(figsize=(16,9))
+fig = plt.figure(figsize=(fw,9))
 plt.step(range(len(measurements[0])),Kx, label='$x$')
 plt.step(range(len(measurements[0])),Ky, label='$y$')
 plt.step(range(len(measurements[0])),Kdx, label='$\psi$')
@@ -565,7 +569,7 @@ plt.ylim([-0.1,0.1]);
 
 # <codecell>
 
-fig = plt.figure(figsize=(16,16))
+fig = plt.figure(figsize=(fw,16))
 
 plt.subplot(411)
 plt.step(range(len(measurements[0])),x0-mx[0], label='$x$')
@@ -639,7 +643,7 @@ plt.axis('equal')
 
 # <codecell>
 
-fig = plt.figure(figsize=(9,9))
+fig = plt.figure(figsize=(9,4))
 
 # EKF State
 #plt.quiver(x0,x1,np.cos(x2), np.sin(x2), color='#94C600', units='xy', width=0.01, scale=0.2, label='Driving Direction')
@@ -654,9 +658,10 @@ plt.scatter(mx[::5],my[::5], s=50, label='GPS Measurements')
 plt.xlabel('X [m]')
 plt.xlim(80, 120)
 plt.ylabel('Y [m]')
-plt.ylim(150, 190)
+plt.ylim(160, 180)
 plt.title('Position')
 plt.legend(loc='best');
+plt.savefig('EKF-Position.png', dpi=150)
 
 # <headingcell level=1>
 
@@ -665,93 +670,4 @@ plt.legend(loc='best');
 # <markdowncell>
 
 # As you can see, complicated analytic calculation of the Jacobian Matrices, but it works pretty well.
-
-# <headingcell level=2>
-
-# Write Google Earth KML
-
-# <headingcell level=3>
-
-# Convert back from Meters to Lat/Lon (WGS84)
-
-# <codecell>
-
-latekf = latitude[0] + np.divide(x1,arc)
-lonekf = longitude[0]+ np.divide(x0,np.multiply(arc,np.cos(latitude*np.pi/180.0)))
-
-# <headingcell level=3>
-
-# Create Data for KML Path
-
-# <markdowncell>
-
-# Coordinates and timestamps to be used to locate the car model in time and space
-# The value can be expressed as yyyy-mm-ddThh:mm:sszzzzzz, where T is the separator between the date and the time, and the time zone is either Z (for UTC) or zzzzzz, which represents ±hh:mm in relation to UTC.
-
-# <codecell>
-
-import datetime
-car={}
-car['when']=[]
-car['coord']=[]
-car['gps']=[]
-for i in range(len(millis)):
-    d=datetime.datetime.fromtimestamp(millis[i]/1000.0)
-    car["when"].append(d.strftime("%Y-%m-%dT%H:%M:%SZ"))
-    car["coord"].append((lonekf[i], latekf[i], 0))
-    car["gps"].append((longitude[i], latitude[i], 0))
-
-# <codecell>
-
-from simplekml import Kml, Model, AltitudeMode, Orientation, Scale, Style, Color
-
-# <codecell>
-
-# The model path and scale variables
-car_dae = r'http://simplekml.googlecode.com/hg/samples/resources/car-model.dae'
-car_scale = 1.0
-
-# Create the KML document
-kml = Kml(name=d.strftime("%Y-%m-%d %H:%M"), open=1)
-
-# Create the model
-model_car = Model(altitudemode=AltitudeMode.clamptoground,
-                            orientation=Orientation(heading=75.0),
-                            scale=Scale(x=car_scale, y=car_scale, z=car_scale))
-
-# Create the track
-trk = kml.newgxtrack(name="EKF", altitudemode=AltitudeMode.clamptoground,
-                     description="State Estimation from Extended Kalman Filter with CTRV Model")
-
-# Attach the model to the track
-trk.model = model_car
-trk.model.link.href = car_dae
-
-# Add all the information to the track
-trk.newwhen(car["when"])
-trk.newgxcoord(car["coord"])
-
-# Style of the Track
-trk.iconstyle.icon.href = ""
-trk.labelstyle.scale = 1
-trk.linestyle.width = 4
-trk.linestyle.color = '7fff0000'
-
-# Add GPS measurement marker
-fol = kml.newfolder(name="GPS Measurements")
-sharedstyle = Style()
-sharedstyle.iconstyle.icon.href = 'http://maps.google.com/mapfiles/kml/shapes/placemark_circle.png'
-
-for m in range(len(latitude)):
-    if GPS[m]:
-        pnt = fol.newpoint(coords = [(longitude[m],latitude[m])])
-        pnt.style = sharedstyle
-
-# Saving
-#kml.save("Extended-Kalman-Filter-CTRV.kml")
-kml.savekmz("Extended-Kalman-Filter-CTRV.kmz")
-
-# <codecell>
-
-print('Exported KMZ File for Google Earth')
 

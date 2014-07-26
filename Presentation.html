@@ -732,12 +732,14 @@ code {
   </section>
   <section>
     <h2 id="setup">Setup</h2>
-<p><code>https://github.com/balzer82/PyData-Berlin-2014-Kalman</code></p>
+<p><code>&gt; http://tinyurl.com/PyData-Kalman &lt;</code></p>
+<p>or</p>
+<pre><code>git clone https://github.com/balzer82/PyData-Berlin-2014-Kalman</code></pre>
 <p>~</p>
 <p>Package Versions used:</p>
 <pre><code>Sympy 0.7.4.1
 Numpy 1.8.1
-Pandas 0.14.0
+Pandas 0.14.1
 Matplotlib 1.3.1
 IPython 2.1.0
 Seaborn 0.3.1</code></pre>
@@ -747,9 +749,14 @@ Seaborn 0.3.1</code></pre>
   </section>
   <section>
     <h1 id="prolog">Prolog</h1>
-<p>The best filter algorithm to fuse multiple sensor informations is the Kalman filter. To implement it for non-linear dynamic models (e.g. a car), analytic calculations for the matrices are necessary.</p>
 <p><img src="Data-Filtering.png" alt="Data Filtering"></p>
-<p>This talk will show, how the IPython Notebook and Sympy helps to develop an optimal filter to fuse sensor information from different sources (e.g. IMU yawrate and GPS position) to get an optimal estimate.</p>
+<p>This talk will show you, how the IPython Notebook and Sympy helps to develop an optimal filter to fuse sensor information from different sources (e.g. IMU yawrate and GPS position) to get an optimal estimate.</p>
+
+  </section>
+  <section>
+    <h1 id="today-s-goal">Today&#39;s Goal</h1>
+<p><img src="EKF-Position.png" alt="Data"></p>
+<p>A car is driving in the city. Shading &gt; bad GPS Signal quality &gt; Position signal is &quot;jumping&quot;. But position estimate could be improved by speed and turn rate measurements.</p>
 
   </section>
   <section>
@@ -764,8 +771,9 @@ Seaborn 0.3.1</code></pre>
   </section>
   <section>
     <h3 id="1-sensor-noise">1. Sensor Noise</h3>
-<p>A very basic introduction to sensor noise and how to describe them statistically.</p>
+<p>Believe it or not: No sensor on the whole world is providing the &#39;real value&#39;. And even if, you do not know, if it is the real value.</p>
 <p><img src="ax_dist.png" alt="ax noise"></p>
+<p><code>sensor value = real value + some error</code></p>
 <p>See <a href="http://localhost:8888/notebooks/Sensor-Noise.ipynb">Sensor-Noise.ipynb</a></p>
 
   </section>
@@ -779,14 +787,14 @@ Seaborn 0.3.1</code></pre>
   <section>
     <h3 id="3-multi-dimensional-kalman-filter">3. Multi-Dimensional Kalman Filter</h3>
 <p>Now we are going multi-dimensional with matrices.</p>
-<p><img src="Kalman-Filter-Step.png" alt="Kalman Filter"></p>
-<p>See <a href="http://localhost:8888/notebooks/Kalman-Filter-CV.ipynb">Kalman-Filter-CV.ipynb</a></p>
+<p><img src="Kalman-Filter-CA-Ball-StateEstimated.png" alt="Kalman Filter"></p>
+<p>See <a href="http://localhost:8888/notebooks/Kalman-Filter-CA-Ball.ipynb">Kalman-Filter-CA-Ball.ipynb</a></p>
 
   </section>
   <section>
     <h3 id="4-extended-kalman-filter">4. Extended Kalman Filter</h3>
 <p>This is actually a real life example, which fuses GPS measurements and IMU measurements of a real vehicle.</p>
-<p><img src="Extended-Kalman-Filter-Step.png" alt="Extended Kalman Filter Step"></p>
+<p><img src="EKF-Position.png" alt="Data"></p>
 <p>See <a href="http://localhost:8888/notebooks/Extended-Kalman-Filter-CTRV.ipynb">Extended-Kalman-Filter-CTRV.ipynb</a></p>
 
   </section>
