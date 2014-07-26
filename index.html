@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Pydata-berlin-2014-kalman : Talk at PyData Berlin Conference" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Pydata-berlin-2014-kalman</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/balzer82/PyData-Berlin-2014-Kalman">View on GitHub</a>
+
+          <h1 id="project_title">Pydata-berlin-2014-kalman</h1>
+          <h2 id="project_tagline">Talk at PyData Berlin Conference</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/balzer82/PyData-Berlin-2014-Kalman/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/balzer82/PyData-Berlin-2014-Kalman/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="pydata-2014-berlin" class="anchor" href="#pydata-2014-berlin"><span class="octicon octicon-link"></span></a>PyData 2014 Berlin</h1>
+
+<h2>
+<a name="ipython-and-sympy-to-develop-a-kalman-filter-for-multisensor-data-fusion" class="anchor" href="#ipython-and-sympy-to-develop-a-kalman-filter-for-multisensor-data-fusion"><span class="octicon octicon-link"></span></a>IPython and Sympy to Develop a Kalman Filter for Multisensor Data Fusion</h2>
+
+<p>~ Paul Balzer ~</p>
+
+<p>The best filter algorithm to fuse multiple sensor informations is the Kalman filter. To implement it for non-linear dynamic models (e.g. a car), analytic calculations for the matrices are necessary. In this talk, one can see, how the IPython Notebook and Sympy helps to develop an optimal filter to fuse sensor information from different sources (e.g. acceleration, speed and GPS position) to get an optimal estimate.</p>
+
+<h2>
+<a name="topics" class="anchor" href="#topics"><span class="octicon octicon-link"></span></a>Topics</h2>
+
+<h3>
+<a name="1-sensor-noise" class="anchor" href="#1-sensor-noise"><span class="octicon octicon-link"></span></a>1. Sensor Noise</h3>
+
+<p>A very basic introduction to sensor noise and how to describe them statistically.</p>
+
+<p><img src="ax_dist.png" alt="ax noise"></p>
+
+<p>You need to download and run this <a href="">IPython Notebook</a> locally, to see the interactive elements.</p>
+
+<h3>
+<a name="2-kalman-filter-in-1d" class="anchor" href="#2-kalman-filter-in-1d"><span class="octicon octicon-link"></span></a>2. Kalman Filter in 1D</h3>
+
+<p>Basic introduction to the theory behind the filter algorithm in just one dimension.</p>
+
+<p><img src="Kalman-Filter-1D-Step.png" alt="Kalman 1D"></p>
+
+<p>You need to download and run this <a href="">IPython Notebook</a> locally, to see the interactive elements.</p>
+
+<h3>
+<a name="3-multi-dimensional-kalman-filter" class="anchor" href="#3-multi-dimensional-kalman-filter"><span class="octicon octicon-link"></span></a>3. Multi-Dimensional Kalman Filter</h3>
+
+<p>Now we are going multi-dimensional with matrices.</p>
+
+<p><img src="Kalman-Filter-Step.png" alt="Kalman Filter"></p>
+
+<p><a href="">IPython Notebook</a></p>
+
+<h3>
+<a name="4-extended-kalman-filter-for-nonlinear-dynamics" class="anchor" href="#4-extended-kalman-filter-for-nonlinear-dynamics"><span class="octicon octicon-link"></span></a>4. Extended Kalman Filter for nonlinear dynamics</h3>
+
+<p>This is actually a real life example, which fuses GPS measurements and IMU measurements of a real vehicle.</p>
+
+<p><img src="Extended-Kalman-Filter-Step.png" alt="Extended Kalman Filter Step"></p>
+
+<p><a href="">IPython Notebook</a></p>
+
+<h2>
+<a name="video" class="anchor" href="#video"><span class="octicon octicon-link"></span></a>Video</h2>
+
+<p><em>coming soon...</em></p>
+
+<h2>
+<a name="presentation" class="anchor" href="#presentation"><span class="octicon octicon-link"></span></a>Presentation</h2>
+
+<p><code>Presentation.html</code> is made with <a href="https://github.com/jdan/cleaver">cleaver</a>: Simply <code>cleaver Presentation.md</code></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Pydata-berlin-2014-kalman maintained by <a href="https://github.com/balzer82">balzer82</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-46744695-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+
+  </body>
+</html>
