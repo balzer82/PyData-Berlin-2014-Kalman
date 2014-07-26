@@ -1,36 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Pydata-berlin-2014-kalman : Talk at PyData Berlin Conference" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Pydata-berlin-2014-kalman by balzer82</title>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Pydata-berlin-2014-kalman</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
-
   <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Pydata-berlin-2014-kalman</h1>
+        <p class="header">Talk at PyData Berlin Conference</p>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/balzer82/PyData-Berlin-2014-Kalman">View on GitHub</a>
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/balzer82/PyData-Berlin-2014-Kalman/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/balzer82/PyData-Berlin-2014-Kalman/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/balzer82/PyData-Berlin-2014-Kalman">View On GitHub</a></li>
+        </ul>
 
-          <h1 id="project_title">Pydata-berlin-2014-kalman</h1>
-          <h2 id="project_tagline">Talk at PyData Berlin Conference</h2>
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/balzer82">balzer82</a></p>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/balzer82/PyData-Berlin-2014-Kalman/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/balzer82/PyData-Berlin-2014-Kalman/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
+      </header>
+      <section>
         <h1>
 <a name="pydata-2014-berlin" class="anchor" href="#pydata-2014-berlin"><span class="octicon octicon-link"></span></a>PyData 2014 Berlin</h1>
 
@@ -47,38 +46,40 @@
 <h3>
 <a name="1-sensor-noise" class="anchor" href="#1-sensor-noise"><span class="octicon octicon-link"></span></a>1. Sensor Noise</h3>
 
-<p>A very basic introduction to sensor noise and how to describe them statistically.</p>
+<p>Believe it or not: No sensor on the whole world is providing the 'real value'. And even if, you do not know, if it is the real value.</p>
 
-<p><img src="ax_dist.png" alt="ax noise"></p>
+<p><img src="https://raw.githubusercontent.com/balzer82/PyData-Berlin-2014-Kalman/master/ax_dist.png" alt="ax noise"></p>
 
-<p>You need to download and run this <a href="">IPython Notebook</a> locally, to see the interactive elements.</p>
+<p><code>sensor value = real value + some error</code></p>
+
+<p>See <a href="http://nbviewer.ipython.org/github/balzer82/PyData-Berlin-2014-Kalman/blob/master/Sensor-Noise.ipynb">Sensor-Noise.ipynb</a></p>
 
 <h3>
-<a name="2-kalman-filter-in-1d" class="anchor" href="#2-kalman-filter-in-1d"><span class="octicon octicon-link"></span></a>2. Kalman Filter in 1D</h3>
+<a name="2-filter-idea-in-1d" class="anchor" href="#2-filter-idea-in-1d"><span class="octicon octicon-link"></span></a>2. Filter idea in 1D</h3>
 
 <p>Basic introduction to the theory behind the filter algorithm in just one dimension.</p>
 
-<p><img src="Kalman-Filter-1D-Step.png" alt="Kalman 1D"></p>
+<p><img src="https://raw.githubusercontent.com/balzer82/PyData-Berlin-2014-Kalman/master/Kalman-Filter-1D-Step.png" alt="Kalman 1D"></p>
 
-<p>You need to download and run this <a href="">IPython Notebook</a> locally, to see the interactive elements.</p>
+<p>See <a href="http://nbviewer.ipython.org/github/balzer82/PyData-Berlin-2014-Kalman/blob/master/Kalman-Filter-1D.ipynb">Kalman-Filter-1D.ipynb</a></p>
 
 <h3>
 <a name="3-multi-dimensional-kalman-filter" class="anchor" href="#3-multi-dimensional-kalman-filter"><span class="octicon octicon-link"></span></a>3. Multi-Dimensional Kalman Filter</h3>
 
 <p>Now we are going multi-dimensional with matrices.</p>
 
-<p><img src="Kalman-Filter-Step.png" alt="Kalman Filter"></p>
+<p><img src="https://raw.githubusercontent.com/balzer82/PyData-Berlin-2014-Kalman/master/Kalman-Filter-CA-Ball-StateEstimated.png" alt="Kalman Filter"></p>
 
-<p><a href="">IPython Notebook</a></p>
+<p>See <a href="http://nbviewer.ipython.org/github/balzer82/PyData-Berlin-2014-Kalman/blob/master/Kalman-Filter-CA-Ball.ipynb">Kalman-Filter-CA-Ball.ipynb</a></p>
 
 <h3>
-<a name="4-extended-kalman-filter-for-nonlinear-dynamics" class="anchor" href="#4-extended-kalman-filter-for-nonlinear-dynamics"><span class="octicon octicon-link"></span></a>4. Extended Kalman Filter for nonlinear dynamics</h3>
+<a name="4-extended-kalman-filter" class="anchor" href="#4-extended-kalman-filter"><span class="octicon octicon-link"></span></a>4. Extended Kalman Filter</h3>
 
 <p>This is actually a real life example, which fuses GPS measurements and IMU measurements of a real vehicle.</p>
 
-<p><img src="Extended-Kalman-Filter-Step.png" alt="Extended Kalman Filter Step"></p>
+<p><img src="https://raw.githubusercontent.com/balzer82/PyData-Berlin-2014-Kalman/master/EKF-Position.png" alt="GPS Position and Kalman Filter Estimation"></p>
 
-<p><a href="">IPython Notebook</a></p>
+<p>See <a href="https://raw.githubusercontent.com/balzer82/PyData-Berlin-2014-Kalman/master/Extended-Kalman-Filter-CTRV.ipynb">Extended-Kalman-Filter-CTRV.ipynb</a></p>
 
 <h2>
 <a name="video" class="anchor" href="#video"><span class="octicon octicon-link"></span></a>Video</h2>
@@ -88,19 +89,14 @@
 <h2>
 <a name="presentation" class="anchor" href="#presentation"><span class="octicon octicon-link"></span></a>Presentation</h2>
 
-<p><code>Presentation.html</code> is made with <a href="https://github.com/jdan/cleaver">cleaver</a>: Simply <code>cleaver Presentation.md</code></p>
+<p><a href="Presentation.html">Presentation.html</a> is made with <a href="https://github.com/jdan/cleaver">cleaver</a>: Simply <code>cleaver Presentation.md</code></p>
       </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Pydata-berlin-2014-kalman maintained by <a href="https://github.com/balzer82">balzer82</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      <footer>
+        <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
       </footer>
     </div>
-
-              <script type="text/javascript">
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		          <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
@@ -110,7 +106,6 @@
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
-
 
   </body>
 </html>
