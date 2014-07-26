@@ -10,40 +10,36 @@ The best filter algorithm to fuse multiple sensor informations is the Kalman fil
 
 Believe it or not: No sensor on the whole world is providing the 'real value'. And even if, you do not know, if it is the real value.
 
-![ax noise](ax_dist.png)
+![ax noise](https://raw.githubusercontent.com/balzer82/PyData-Berlin-2014-Kalman/master/ax_dist.png)
 
 `sensor value = real value + some error`
 
-See [Sensor-Noise.ipynb](http://localhost:8888/notebooks/Sensor-Noise.ipynb)
---
+See [Sensor-Noise.ipynb](http://nbviewer.ipython.org/github/balzer82/PyData-Berlin-2014-Kalman/blob/master/Sensor-Noise.ipynb)
+
 
 ### 2. Filter idea in 1D
 
 Basic introduction to the theory behind the filter algorithm in just one dimension.
 
-![Kalman 1D](Kalman-Filter-1D-Step.png)
+![Kalman 1D](https://raw.githubusercontent.com/balzer82/PyData-Berlin-2014-Kalman/master/Kalman-Filter-1D-Step.png)
 
-See [Kalman-Filter-1D.ipynb](http://localhost:8888/notebooks/Kalman-Filter-1D.ipynb)
-
---
+See [Kalman-Filter-1D.ipynb](http://nbviewer.ipython.org/github/balzer82/PyData-Berlin-2014-Kalman/blob/master/Kalman-Filter-1D.ipynb)
 
 ### 3. Multi-Dimensional Kalman Filter
 
 Now we are going multi-dimensional with matrices.
 
-![Kalman Filter](Kalman-Filter-CA-Ball-StateEstimated.png)
+![Kalman Filter](https://raw.githubusercontent.com/balzer82/PyData-Berlin-2014-Kalman/master/Kalman-Filter-CA-Ball-StateEstimated.png)
 
-See [Kalman-Filter-CA-Ball.ipynb](http://localhost:8888/notebooks/Kalman-Filter-CA-Ball.ipynb)
-
---
+See [Kalman-Filter-CA-Ball.ipynb](http://nbviewer.ipython.org/github/balzer82/PyData-Berlin-2014-Kalman/blob/master/Kalman-Filter-CA-Ball.ipynb)
 
 ### 4. Extended Kalman Filter
 
 This is actually a real life example, which fuses GPS measurements and IMU measurements of a real vehicle.
 
-![Data](EKF-Position.png)
+![GPS Position and Kalman Filter Estimation](https://raw.githubusercontent.com/balzer82/PyData-Berlin-2014-Kalman/master/EKF-Position.png)
 
-See [Extended-Kalman-Filter-CTRV.ipynb](http://localhost:8888/notebooks/Extended-Kalman-Filter-CTRV.ipynb)
+See [Extended-Kalman-Filter-CTRV.ipynb](https://raw.githubusercontent.com/balzer82/PyData-Berlin-2014-Kalman/master/Extended-Kalman-Filter-CTRV.ipynb)
 
 
 ## Video
