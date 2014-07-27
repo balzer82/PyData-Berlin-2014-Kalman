@@ -48,4 +48,4 @@ See [Extended-Kalman-Filter-CTRV.ipynb](http://nbviewer.ipython.org/github/balze
 
 ## Presentation
 
-[Presentation.html](Presentation.html) is made with [cleaver](https://github.com/jdan/cleaver): Simply `cleaver Presentation.md`
+[Presentation](https://github.com/balzer82/PyData-Berlin-2014-Kalman/blob/master/Presentation.html) is made with [cleaver](https://github.com/jdan/cleaver): Simply `cleaver Presentation.md`
